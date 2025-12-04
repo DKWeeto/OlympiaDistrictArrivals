@@ -21,16 +21,19 @@ def get_arrivals(stop_id):
 
 if __name__ == '__main__':
     arrivals = get_arrivals("940GZZLUKOY") # Stop id here
-    for a in arrivals:
-        exp_arr = parser.isoparse(a['expectedArrival'])
-        
-        print('Line: ', a['lineName'])
-        print('Platform: ', a['platformName'])
-        if 'destinationName' in a:
-            print('Destination: ', a['destinationName'])
-        else:
-            print('Towards: ', a['towards'])
-        print('Expected Arrival: ', exp_arr.strftime("%H:%M:%S"))
-        print('Current Location: ', a['currentLocation'])
-        print('\n')
+    if len(arrivals):
+        for a in arrivals:
+            exp_arr = parser.isoparse(a['expectedArrival'])
+            
+            print('Line: ', a['lineName'])
+            print('Platform: ', a['platformName'])
+            if 'destinationName' in a:
+                print('Destination: ', a['destinationName'])
+            else:
+                print('Towards: ', a['towards'])
+            print('Expected Arrival: ', exp_arr.strftime("%H:%M:%S"))
+            print('Current Location: ', a['currentLocation'])
+            print('\n')
+    else:
+        print('No arrivals :(')
 
