@@ -21,7 +21,7 @@ def get_arrivals(stop_id):
 
 if __name__ == '__main__':
     arrivals = get_arrivals("940GZZLUKOY") # Stop id here
-    if len(arrivals):
+    if arrivals and len(arrivals):
         for a in arrivals:
             exp_arr = parser.isoparse(a['expectedArrival'])
             
